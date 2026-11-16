@@ -7,7 +7,7 @@
 /* Layout: one reading column; a verdict strip, then a cost chart, a who-does-what grid, then per-vendor evidence with screenshots. */
 :root{
   --bg:#f7f8fa; --card:#ffffff; --fg:#17202b; --muted:#5d6876; --line:#e1e5ea;
-  --mini:#d9a400; --soona:#e0663f; --ins:#b8338f; --ok:#2f7d4f; --warn:#a8650b;
+  --ben:#1f6f8b; --mini:#d9a400; --soona:#e0663f; --ins:#b8338f; --ok:#2f7d4f; --warn:#a8650b;
   --chip:#eef1f5;
   --display:"Instrument Sans", system-ui, sans-serif;
   --body:"Instrument Sans", system-ui, sans-serif;
@@ -15,10 +15,10 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#12161c; --card:#1a2028; --fg:#e8ecf1; --muted:#9aa5b2; --line:#2a323d;
-  --mini:#f0c23a; --soona:#f08560; --ins:#e06bbd; --ok:#5fbf86; --warn:#e3a64a; --chip:#232a34; color-scheme:dark}}
+  --ben:#5bb8d6; --mini:#f0c23a; --soona:#f08560; --ins:#e06bbd; --ok:#5fbf86; --warn:#e3a64a; --chip:#232a34; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#12161c; --card:#1a2028; --fg:#e8ecf1; --muted:#9aa5b2; --line:#2a323d;
-  --mini:#f0c23a; --soona:#f08560; --ins:#e06bbd; --ok:#5fbf86; --warn:#e3a64a; --chip:#232a34; color-scheme:dark}
+  --ben:#5bb8d6; --mini:#f0c23a; --soona:#f08560; --ins:#e06bbd; --ok:#5fbf86; --warn:#e3a64a; --chip:#232a34; color-scheme:dark}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55}
 .wrap{max-width:1040px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:44px}
 h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
@@ -95,6 +95,14 @@ figcaption{font-size:12px;color:var(--muted)}
 .step.hi .r{font-weight:700;color:var(--fg)}
 .step.hi .k{color:var(--fg);font-weight:600}
 @media (max-width:520px){.step{grid-template-columns:minmax(0,1fr) 64px}.step .m{grid-column:1/-1;grid-row:2;text-align:left}}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:-20px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5;padding-top:6px}
+.tabs a{padding:10px 14px;text-decoration:none;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-1px}
+.tabs a[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--fg)}
+.tabs a:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.view{display:flex;flex-direction:column;gap:44px}
+.d-ben{background:var(--ben)}
+.tbd{color:var(--muted);font-style:italic}
+.chart tspan.sub{fill:var(--muted);font-size:11.5px}
 .vh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .callout{border-left:3px solid var(--c);padding:4px 0 4px 14px;font-size:14px}
 .open li{margin-bottom:6px}
@@ -108,6 +116,12 @@ a{color:inherit;text-decoration-color:var(--muted)}
   <h1>minisocial, soona (formerly Trend.io) and Insense: price and how managed</h1>
   <p class="lede">We demoed all three for Benable's Q1 content push of 25 to 100 pieces a month. minisocial is fully managed by default. soona and Insense are self-serve tools with a paid managed tier. Their prices count different things, so this page converts each one to cost per piece.</p>
 </header>
+<nav class="tabs" role="tablist" aria-label="Views">
+  <a href="#vendors" role="tab" data-view="vendors" aria-selected="true">Vendors</a>
+  <a href="#vs-benable" role="tab" data-view="vs-benable" aria-selected="false">vs Benable</a>
+</nav>
+<div class="view" id="view-vendors">
+
 
 <section>
   <div class="verdicts">
@@ -321,5 +335,68 @@ a{color:inherit;text-decoration-color:var(--muted)}
   <p class="note">Sources: Granola notes and transcripts for the minisocial intro (Nov 13), soona consult (Nov 6), Friday Feels (Nov 6) and Insense demo (Sep 17). Gmail threads with soona, minisocial and Insense. soona.co/ugc, insense.pro/pricing and minisocial.com, checked Nov 16, 2026. The cost per piece figures are my own math from these numbers.</p>
 </section>
 </div>
+
+<div class="view" id="view-vs-benable" hidden>
+<section>
+  <h2>Benable next to the vendors, per creator at 50</h2>
+  <p class="lede">Benable is <b>$79.99 per creator</b> at 50 creators, and up to <b>$179.99</b> with the $100 rights add-on ($79.99 + $100). All three vendors include content rights in their price, so the fair comparison is $179.99.</p>
+  <div class="verdicts">
+    <div class="v" style="--c:var(--ben)"><div class="name">Benable, with rights</div><div class="big">$179.99<small> / creator</small></div><div class="calc">$79.99 + $100 rights</div><ul><li>Total for 50: $179.99 × 50 = $8,999.50</li><li>Without rights: $79.99 × 50 = $3,999.50</li></ul></div>
+    <div class="v" style="--c:var(--mini)"><div class="name">vs cheapest managed (minisocial)</div><div class="big">1.22×<small> Benable</small></div><div class="calc">$220 ÷ $179.99</div><ul><li>Brand pays $40.01 more per creator ($220 − $179.99)</li><li>× 50 = $2,000.50 more</li></ul></div>
+    <div class="v" style="--c:var(--soona)"><div class="name">Cheaper than Benable with rights</div><div class="big">2 options</div><ul><li>soona self-serve Level 1: $89 (0.49×)</li><li>Insense self-serve at $100 creator: $120 (0.67×)</li><li>Both self-serve: the brand does the creator work</li></ul></div>
+  </div>
+</section>
+<section>
+  <h2>Cost per piece, around 50 pieces</h2>
+  <div class="panel chart"><svg viewBox="0 0 800 394" role="img" aria-label="Cost per piece with Benable"><g class="grid"><line x1="210.0" y1="20" x2="210.0" y2="358"/><line x1="293.3" y1="20" x2="293.3" y2="358"/><line x1="376.7" y1="20" x2="376.7" y2="358"/><line x1="460.0" y1="20" x2="460.0" y2="358"/><line x1="543.3" y1="20" x2="543.3" y2="358"/><line x1="626.7" y1="20" x2="626.7" y2="358"/><line x1="710.0" y1="20" x2="710.0" y2="358"/></g><g class="axis" text-anchor="middle"><text x="210.0" y="378">$0</text><text x="293.3" y="378">$100</text><text x="376.7" y="378">$200</text><text x="460.0" y="378">$300</text><text x="543.3" y="378">$400</text><text x="626.7" y="378">$500</text><text x="710.0" y="378">$600</text></g><text x="0" y="44" font-weight="600">Benable</text><text x="0" y="60" class="sub">$79.99 base + $100 rights</text><rect x="210" y="34" width="66.7" height="22" rx="3" fill="var(--ben)"/><rect x="276.7" y="34" width="83.3" height="22" rx="3" fill="none" stroke="var(--ben)" stroke-width="2" stroke-dasharray="5 3"/><line x1="276.7" y1="30" x2="276.7" y2="60" stroke="var(--fg)" stroke-width="2"/><text x="368.0" y="50" class="val">$79.99–179.99</text><text x="0" y="98" font-weight="600">minisocial · managed</text><text x="0" y="114" class="sub">$11,000 ÷ 50 creators</text><rect x="210" y="88" width="183.3" height="22" rx="3" fill="var(--mini)"/><text x="401.3" y="104" class="val">$220</text><text x="0" y="152" font-weight="600">Insense · managed</text><text x="0" y="168" class="sub">$230 fee + creator $100–200</text><rect x="210" y="142" width="280.8" height="22" rx="3" fill="var(--ins)" opacity=".35"/><rect x="490.8" y="142" width="89.2" height="22" rx="3" fill="var(--ins)"/><text x="588.0" y="158" class="val">$337–444</text><text x="0" y="206" font-weight="600">soona · managed</text><text x="0" y="222" class="sub">Level 1 to Level 3, avg $480</text><rect x="210" y="196" width="333.3" height="22" rx="3" fill="var(--soona)" opacity=".35"/><rect x="543.3" y="196" width="126.7" height="22" rx="3" fill="var(--soona)"/><line x1="610.0" y1="192" x2="610.0" y2="222" stroke="var(--fg)" stroke-width="2"/><text x="678.0" y="212" class="val">$400–552</text><line x1="0" y1="242" x2="710" y2="242" class="grid" stroke-dasharray="3 4"/><text x="0" y="280" font-weight="600">soona · self-serve</text><text x="0" y="296" class="sub">$89 / $169 / $259, avg $184</text><rect x="284.2" y="270" width="141.7" height="22" rx="3" fill="none" stroke="var(--soona)" stroke-width="2"/><line x1="363.3" y1="266" x2="363.3" y2="296" stroke="var(--fg)" stroke-width="2"/><text x="433.8" y="286" class="val">$89–259</text><text x="0" y="334" font-weight="600">Insense · self-serve</text><text x="0" y="350" class="sub">$500/mo + creator $100–200</text><rect x="310.0" y="324" width="91.7" height="22" rx="3" fill="none" stroke="var(--ins)" stroke-width="2"/><text x="409.7" y="340" class="val">$120–230</text><line x1="360.0" y1="20" x2="360.0" y2="358" stroke="var(--ben)" stroke-width="1.5" stroke-dasharray="2 3"/></svg>
+    <p class="note">Benable: the filled bar is the $79.99 base, and the dashed outline runs to $179.99 with rights. The dotted blue line marks $179.99 across all rows. Everything else matches the Vendors tab chart.</p>
+  </div>
+</section>
+<section>
+  <h2>The math: each vendor vs Benable</h2>
+  <div class="panel tbl">
+    <table class="math">
+      <thead><tr><th>Vendor</th><th>Per creator</th><th>vs Benable base ($79.99)</th><th>vs Benable with rights ($179.99)</th><th>Total for 50</th></tr></thead>
+      <tbody>
+        <tr><td><span class="dot d-ben"></span>Benable</td><td>$79.99 / $179.99<br><span class="calc">base / base + $100 rights</span></td><td>1×</td><td>1×</td><td>$3,999.50 / $8,999.50<br><span class="calc">$79.99 × 50 / $179.99 × 50</span></td></tr>
+        <tr><td rowspan="1"><span class="dot d-mini"></span>minisocial, managed</td><td>$220<br><span class="calc">$11,000 ÷ 50</span></td><td>2.75×<br><span class="calc">$220 ÷ $79.99</span></td><td><b>1.22×</b><br><span class="calc">$220 ÷ $179.99</span></td><td>$11,000<br><span class="calc">$220 × 50</span></td></tr><tr><td rowspan="3"><span class="dot d-soona"></span>soona, self-serve</td><td>$89<br><span class="calc">Level 1</span></td><td>1.11×<br><span class="calc">$89 ÷ $79.99</span></td><td><b>0.49×</b><br><span class="calc">$89 ÷ $179.99</span></td><td>$4,450<br><span class="calc">$89 × 50</span></td></tr><tr><td>$184<br><span class="calc">their mix: $9,198 ÷ 50</span></td><td>2.30×<br><span class="calc">$184 ÷ $79.99</span></td><td><b>1.02×</b><br><span class="calc">$184 ÷ $179.99</span></td><td>$9,200<br><span class="calc">$184 × 50</span></td></tr><tr><td>$259<br><span class="calc">Level 3</span></td><td>3.24×<br><span class="calc">$259 ÷ $79.99</span></td><td><b>1.44×</b><br><span class="calc">$259 ÷ $179.99</span></td><td>$12,950<br><span class="calc">$259 × 50</span></td></tr><tr><td rowspan="3"><span class="dot d-soona"></span>soona, managed</td><td>$400<br><span class="calc">Level 1: $81 + $319</span></td><td>5.00×<br><span class="calc">$400 ÷ $79.99</span></td><td><b>2.22×</b><br><span class="calc">$400 ÷ $179.99</span></td><td>$20,000<br><span class="calc">$400 × 50</span></td></tr><tr><td>$480<br><span class="calc">their mix: $24,000 ÷ 50</span></td><td>6.00×<br><span class="calc">$480 ÷ $79.99</span></td><td><b>2.67×</b><br><span class="calc">$480 ÷ $179.99</span></td><td>$24,000<br><span class="calc">$480 × 50</span></td></tr><tr><td>$552<br><span class="calc">Level 3: $233 + $319</span></td><td>6.90×<br><span class="calc">$552 ÷ $79.99</span></td><td><b>3.07×</b><br><span class="calc">$552 ÷ $179.99</span></td><td>$27,600<br><span class="calc">$552 × 50</span></td></tr><tr><td rowspan="2"><span class="dot d-ins"></span>Insense, self-serve</td><td>$120<br><span class="calc">$100 creator</span></td><td>1.50×<br><span class="calc">$120 ÷ $79.99</span></td><td><b>0.67×</b><br><span class="calc">$120 ÷ $179.99</span></td><td>$6,000<br><span class="calc">$120 × 50</span></td></tr><tr><td>$230<br><span class="calc">$200 creator</span></td><td>2.88×<br><span class="calc">$230 ÷ $79.99</span></td><td><b>1.28×</b><br><span class="calc">$230 ÷ $179.99</span></td><td>$11,500<br><span class="calc">$230 × 50</span></td></tr><tr><td rowspan="2"><span class="dot d-ins"></span>Insense, managed</td><td>$337<br><span class="calc">$100 creator</span></td><td>4.21×<br><span class="calc">$337 ÷ $79.99</span></td><td><b>1.87×</b><br><span class="calc">$337 ÷ $179.99</span></td><td>$16,850<br><span class="calc">$337 × 50</span></td></tr><tr><td>$444<br><span class="calc">$200 creator</span></td><td>5.55×<br><span class="calc">$444 ÷ $79.99</span></td><td><b>2.47×</b><br><span class="calc">$444 ÷ $179.99</span></td><td>$22,200<br><span class="calc">$444 × 50</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">How to read it: 1.22× means the vendor costs 1.22 times Benable for the same number of creators. Below 1× means the vendor is cheaper. Vendor per-creator numbers are worked out on the Vendors tab. Product and shipping are left out for everyone.</p>
+</section>
+<section>
+  <h2>What each $ buys: check our offer line by line</h2>
+  <p class="note">Vendor columns are what they told us. The Benable column is for you to fill in.</p>
+  <div class="panel tbl">
+    <table>
+      <thead><tr><th>Line</th><th><span class="dot d-ben"></span>Benable ($79.99–179.99)</th><th><span class="dot d-mini"></span>minisocial ($220)</th><th><span class="dot d-soona"></span>soona ($89–552)</th><th><span class="dot d-ins"></span>Insense ($120–444)</th></tr></thead>
+      <tbody>
+        <tr><td>Content rights</td><td>+$100 per creator</td><td>Included, forever</td><td>Included, forever</td><td>Included, brand owns forever</td></tr>
+        <tr><td>Creator posts on their own feed</td><td class="tbd">to confirm</td><td>Yes</td><td>No. +$500–1,000 per post</td><td>Yes, for influencer posts</td></tr>
+        <tr><td>Partnership ads / whitelisting</td><td class="tbd">to confirm</td><td>30 days included</td><td>Add-on, priced by level</td><td>Meta Partnership Ads built in</td></tr>
+        <tr><td>Who finds creators</td><td class="tbd">to confirm</td><td>They pick by hand</td><td>Managed: they do. Self-serve: brand does</td><td>Managed: they do. Self-serve: creators apply</td></tr>
+        <tr><td>No-show cover</td><td class="tbd">to confirm</td><td>Replacement or refund</td><td>Not discussed</td><td>Contractual. Repeat no-shows removed</td></tr>
+        <tr><td>Time to content</td><td class="tbd">to confirm</td><td>4–6 weeks</td><td>7–10 days after product</td><td>≈3 weeks</td></tr>
+        <tr><td>Commitment</td><td class="tbd">to confirm</td><td>Per project</td><td>$588/yr, or $24K–48K/yr Enterprise</td><td>$1,500/quarter, or 2 months managed upfront</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</div>
+<script>
+(function(){
+  var views=["vendors","vs-benable"];
+  function show(f){
+    var h=f||(location.hash||"").slice(1); if(views.indexOf(h)<0) h="vendors";
+    views.forEach(function(v){
+      document.getElementById("view-"+v).hidden=(v!==h);
+      var t=document.querySelector('.tabs a[data-view="'+v+'"]'); if(t) t.setAttribute("aria-selected", v===h?"true":"false");
+    });
+  }
+  document.querySelectorAll(".tabs a").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var v=a.getAttribute("data-view");try{history.replaceState(null,"","#"+v)}catch(_){location.hash=v}show(v);window.scrollTo(0,0);});});
+  window.addEventListener("hashchange",function(){show()}); show();
+})();
+</script>
 
 </body></html>
