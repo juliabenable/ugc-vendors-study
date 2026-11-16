@@ -54,6 +54,11 @@ section{display:flex;flex-direction:column;gap:16px}
 .chart .val{font-family:var(--mono);font-size:12px;font-weight:500}
 .chart .sub{fill:var(--muted);font-size:11.5px}
 .note{font-size:13px;color:var(--muted)}
+.calc{font:400 12.5px/1.4 var(--mono);color:var(--muted)}
+.calc::before{content:"= "}
+.math td{font-family:var(--mono);font-size:13px}
+.math td:first-child{font-family:var(--body);font-size:14px}
+.math td:last-child{font-family:var(--body);color:var(--muted);font-size:13px}
 /* who does what */
 .tbl{overflow-x:auto}
 table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
@@ -94,18 +99,21 @@ a{color:inherit;text-decoration-color:var(--muted)}
       <div><div class="name">minisocial</div><div class="aka">Micro-influencers with 1K to 10K followers, 40K vetted creators</div></div>
       <span class="pill yes">● Fully managed by default</span>
       <div class="big">$220<small> / creator at 50</small></div>
+      <div class="calc">$11,000 ÷ 50 creators</div>
       <ul><li>$3K for 10 · $11K for 50 · $22.5K for 100</li><li>Paid per project, no subscription</li><li>Creator <b>posts on their own feed</b>, plus a license forever</li></ul>
     </div>
     <div class="v" style="--c:var(--soona)">
       <div><div class="name">soona</div><div class="aka">Bought Trend.io in 2023 · about 2K vetted UGC creators · studio too</div></div>
       <span class="pill opt">◐ Managed is an add-on</span>
       <div class="big">$480<small> / video managed</small></div>
-      <ul><li>$184 / video self-serve (50-video option)</li><li>Managed ≈ 60% of the bill</li><li>Delivers <b>video files only</b>. Creator posting is +$500 to $1,000 per post</li></ul>
+      <div class="calc">$24,000 ÷ 50 videos</div>
+      <ul><li>$184 / video self-serve ($9,198 ÷ 50)</li><li>Managing them is 61% of the bill ($14,734 ÷ $24,000)</li><li>Delivers <b>video files only</b>. Creator posting is +$500 to $1,000 per post</li></ul>
     </div>
     <div class="v" style="--c:var(--ins)">
       <div><div class="name">Insense</div><div class="aka">125K creators (about 75K in the US) · SaaS marketplace</div></div>
       <span class="pill opt">◐ Managed is an add-on</span>
       <div class="big">≈$215<small> / creator managed</small></div>
+      <div class="calc">$4,300 midpoint ÷ 20 creators</div>
       <ul><li>Sample quote: about $2.6K fee for 20 creators a month (≈$4.3K with creator pay)</li><li>2-month minimum</li><li>Self-serve: $500/mo plus a 10% fee on creator pay</li></ul>
     </div>
   </div>
@@ -145,9 +153,29 @@ a{color:inherit;text-decoration-color:var(--muted)}
       <rect x="210" y="262" width="120" height="22" rx="3" fill="none" stroke="var(--ins)" stroke-width="2"/>
       <rect x="330" y="262" width="110" height="22" rx="3" fill="none" stroke="var(--ins)" stroke-width="2" stroke-dasharray="4 3"/><text x="448" y="278" class="val">$120–230</text>
     </svg>
-    <p class="note">Solid bars: fully managed. Outlined bars: self-serve, where our team does the creator work. Product and shipping are extra for all three. soona's totals buy that many videos, spread over up to 12 months. They are not a monthly price.</p>
+    <p class="note">Solid bars: fully managed. Outlined bars: self-serve, where our team does the creator work. Product and shipping are extra for all three. soona's totals buy that many videos, spread over up to 12 months. They are not a monthly price. Every number is worked out in the table below.</p>
   </div>
-  <p class="callout" style="--c:var(--soona)"><b>The deliverables differ.</b> minisocial and Insense influencer posts include the creator <b>posting</b> on their own feed. soona's $89 to $259 buys a licensed video file. If you add posting at $500 to $1,000+ per post, soona costs 3 to 5 times as much as the others for the same "creator posts about us" result.</p>
+  <p class="callout" style="--c:var(--soona)"><b>The deliverables differ.</b> minisocial and Insense influencer posts include the creator <b>posting</b> on their own feed. soona's $89 to $259 buys a licensed video file. Add posting at $500 to $1,000+ per post and even self-serve soona costs about 3 to 5 times minisocial's $220 for the same "creator posts about us" result: ($184 + $500) ÷ $220 = 3.1×, and ($184 + $1,000) ÷ $220 = 5.4×.</p>
+</section>
+
+<section>
+  <h2>How each number was computed</h2>
+  <p class="note">Inputs come from the vendors (call, proposal or website). The math is mine. Cost per piece = total price ÷ number of pieces.</p>
+  <div class="panel tbl">
+    <table class="math">
+      <thead><tr><th>Figure</th><th>Calculation</th><th>Where the inputs come from</th></tr></thead>
+      <tbody>
+        <tr><td>minisocial, managed</td><td>$11,000 ÷ 50 = <b>$220</b><br>($3,000 ÷ 10 = $300 · $22,500 ÷ 100 = $225)</td><td>Kirsten on the Nov 13 call</td></tr>
+        <tr><td>Insense, managed</td><td>$4,000 ÷ 20 = $200<br>$4,600 ÷ 20 = $230 → <b>$200–230</b><br>midpoint $4,300 ÷ 20 = <b>≈$215</b></td><td>Ahmet's sample on the Sep 17 demo: about $2,600 fee for 20 creators, about $4,000–4,600 with creator pay</td></tr>
+        <tr><td>soona, managed</td><td>$24,000 ÷ 50 = <b>$480</b><br>($12,801 ÷ 27 = $474 · $48,000 ÷ 100 = $480)</td><td>soona proposal, Nov 9, "Total with campaign manager"</td></tr>
+        <tr><td>soona, self-serve</td><td>$9,198 ÷ 50 = <b>$184</b><br>($5,241 ÷ 27 = $194 · $17,808 ÷ 100 = $178)</td><td>soona proposal, "Total, self-serve"</td></tr>
+        <tr><td>soona, management share</td><td>$14,734 ÷ $24,000 = <b>61%</b></td><td>soona proposal, "Campaign management" line on Option 2</td></tr>
+        <tr><td>Insense, self-serve (low)</td><td>[$500 + 50 × ($100 × 1.10)] ÷ 50<br>= ($500 + $5,500) ÷ 50 = <b>$120</b></td><td>insense.pro/pricing: $500/mo Brand plan, 10% fee, UGC from $100. Assumes 50 creators in one month</td></tr>
+        <tr><td>Insense, self-serve (high)</td><td>[$500 + 50 × ($200 × 1.10)] ÷ 50<br>= ($500 + $11,000) ÷ 50 = <b>$230</b></td><td>Same, at the $200 per creator we put in our Sep 25 brief</td></tr>
+        <tr><td>soona with posting vs minisocial</td><td>($184 + $500) ÷ $220 = <b>3.1×</b><br>($184 + $1,000) ÷ $220 = <b>5.4×</b></td><td>soona proposal add-on: creator posting $500–1,000+ per post</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <section>
@@ -234,7 +262,7 @@ a{color:inherit;text-decoration-color:var(--muted)}
       <li><b>soona</b>: Jenna followed up Nov 13 and wants to start matching creators "in the next few weeks". The quote expires Dec 9. Benable's decision was planned for the end of the week of Nov 9. <span class="src">PROPOSED</span></li>
       <li><b>minisocial</b>: check whether the $3K per 10 includes creator pay. The call suggests it does, with only product extra. Confirm in the deck. Their next step is a live briefing with their strategist. <span class="src">OPEN</span></li>
       <li><b>Insense</b>: the written managed quote for our 25 / 50 / 100 brief is behind Ahmet's Oct 20 link. Last contact was Oct 22. <span class="src">OPEN</span></li>
-      <li><b>Comparing fairly</b>: if we want creators to post, compare minisocial ($220) with Insense managed (≈$215). soona only matches on price if we just need ad files. <span class="src">ANALYSIS</span></li>
+      <li><b>Comparing fairly</b>: if we want creators to post, compare minisocial ($11,000 ÷ 50 = $220) with Insense managed ($4,300 ÷ 20 ≈ $215). soona only matches on price if we just need ad files. <span class="src">ANALYSIS</span></li>
     </ul>
   </div>
   <p class="note">Sources: Granola notes and transcripts for the minisocial intro (Nov 13), soona consult (Nov 6), Friday Feels (Nov 6) and Insense demo (Sep 17). Gmail threads with soona, minisocial and Insense. soona.co/ugc, insense.pro/pricing and minisocial.com, checked Nov 16, 2026. The cost per piece figures are my own math from these numbers.</p>
