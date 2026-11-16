@@ -61,7 +61,7 @@ section{display:flex;flex-direction:column;gap:16px}
 .math td:last-child{font-family:var(--body);color:var(--muted);font-size:13px}
 /* who does what */
 .tbl{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+table{border-collapse:collapse;width:100%;min-width:820px;font-size:14px}
 th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
 th{font:500 12px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 td:first-child{font-weight:600;white-space:nowrap}
@@ -184,18 +184,21 @@ a{color:inherit;text-decoration-color:var(--muted)}
 </section>
 
 <section>
-  <h2>Who does the work when it's managed</h2>
+  <h2>Who does the work</h2>
+  <p class="note">The first three columns are fully managed. The last column shows Insense self-serve for contrast: same platform and creators, but our team does the work.</p>
   <div class="panel tbl">
     <table>
-      <thead><tr><th>Step</th><th><span class="dot d-mini"></span>minisocial</th><th><span class="dot d-soona"></span>soona managed</th><th><span class="dot d-ins"></span>Insense managed</th></tr></thead>
+      <thead><tr><th>Step</th><th><span class="dot d-mini"></span>minisocial</th><th><span class="dot d-soona"></span>soona managed</th><th><span class="dot d-ins"></span>Insense managed</th><th><span class="dot d-ins" style="background:none;border:2px solid var(--ins);width:6px;height:6px"></span>Insense self-serve</th></tr></thead>
       <tbody>
-        <tr><td>Write brief</td><td><span class="you">You</span> fill in the brief builder (10 min) or brief live with their strategist</td><td><span class="them">Them</span>: campaign manager builds briefs around your goals</td><td><span class="them">Them</span>: fill out and launch the brief in the platform. <span class="you">You</span> provide the creative brief (not in their scope)</td></tr>
-        <tr><td>Find creators</td><td><span class="them">Them</span>: pick by hand from 40K. Only 10–20% of applicants get in</td><td><span class="them">Them</span>: recruit from about 2K vetted (top 35%)</td><td><span class="them">Them</span>: shortlist, and push your brief to top creators</td></tr>
-        <tr><td>Approve creators</td><td><span class="you">You</span></td><td><span class="you">You</span>, picking from Levels 1–3</td><td><span class="you">You</span></td></tr>
-        <tr><td>Chase and messages</td><td><span class="them">Them</span>: all reminders, follow-ups and issue flags</td><td><span class="them">Them</span>: managed revisions</td><td><span class="them">Them</span>: deadlines, chasing, all messages</td></tr>
-        <tr><td>Approve content</td><td><span class="you">You</span>. 1 revision round included</td><td><span class="you">You</span>. 7–10 day turnaround</td><td><span class="you">You</span></td></tr>
-        <tr><td>Ghosting</td><td>Swap in a waitlisted creator or get a refund. Expect fewer than 5 of 50</td><td>Not discussed</td><td>Influencer posts are contractual. Repeat no-shows get removed</td></tr>
-        <tr><td>Time to content</td><td class="num">4–6 weeks</td><td class="num">7–10 days after product arrives</td><td class="num">≈3 weeks</td></tr>
+        <tr><td>Cost per creator</td><td class="num"><b>$220</b><br><span class="calc">$11,000 ÷ 50</span></td><td class="num"><b>$480</b><br><span class="calc">$24,000 ÷ 50 videos</span></td><td class="num"><b>$337–444</b><br><span class="calc">$4,600 ÷ 20 + ($100–200 × 1.07)</span></td><td class="num"><b>$120–230</b><br><span class="calc">[$500 + 50 × ($100–200 × 1.10)] ÷ 50</span></td></tr>
+        <tr><td>Commitment</td><td>Per project, none</td><td>$24K or $48K a year (Enterprise)</td><td>2 months upfront: 2 × $4,600 = $9,200 in fees</td><td>$1,500 a quarter, renews automatically</td></tr>
+        <tr><td>Write brief</td><td><span class="you">You</span> fill in the brief builder (10 min) or brief live with their strategist</td><td><span class="them">Them</span>: campaign manager builds briefs around your goals</td><td><span class="them">Them</span>: fill out and launch the brief in the platform. <span class="you">You</span> provide the creative brief (not in their scope)</td><td><span class="you">You</span>, from their brief templates</td></tr>
+        <tr><td>Find creators</td><td><span class="them">Them</span>: pick by hand from 40K. Only 10–20% of applicants get in</td><td><span class="them">Them</span>: recruit from about 2K vetted (top 35%)</td><td><span class="them">Them</span>: shortlist, and push your brief to top creators</td><td>Creators apply to your brief. <span class="you">You</span> review them and can invite more from the marketplace</td></tr>
+        <tr><td>Approve creators</td><td><span class="you">You</span></td><td><span class="you">You</span>, picking from Levels 1–3</td><td><span class="you">You</span></td><td><span class="you">You</span></td></tr>
+        <tr><td>Chase and messages</td><td><span class="them">Them</span>: all reminders, follow-ups and issue flags</td><td><span class="them">Them</span>: managed revisions</td><td><span class="them">Them</span>: deadlines, chasing, all messages, paying creators</td><td><span class="you">You</span>, in their chat (AI-assisted bulk messages). Contracts and payments run in the platform</td></tr>
+        <tr><td>Approve content</td><td><span class="you">You</span>. 1 revision round included</td><td><span class="you">You</span>. 7–10 day turnaround</td><td><span class="you">You</span></td><td><span class="you">You</span></td></tr>
+        <tr><td>Ghosting</td><td>Swap in a waitlisted creator or get a refund. Expect fewer than 5 of 50</td><td>Not discussed</td><td>Influencer posts are contractual. Repeat no-shows get removed</td><td>Same as managed, but <span class="you">you</span> handle replacing them. Gifting only: 30–50% may not post</td></tr>
+        <tr><td>Time to content</td><td class="num">4–6 weeks</td><td class="num">7–10 days after product arrives</td><td class="num">≈3 weeks</td><td class="num">≈3 weeks</td></tr>
       </tbody>
     </table>
   </div>
