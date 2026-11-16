@@ -61,7 +61,7 @@ section{display:flex;flex-direction:column;gap:16px}
 .math td:last-child{font-family:var(--body);color:var(--muted);font-size:13px}
 /* who does what */
 .tbl{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:820px;font-size:14px}
+table{border-collapse:collapse;width:100%;min-width:980px;font-size:14px}
 th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
 th{font:500 12px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 td:first-child{font-weight:600;white-space:nowrap}
@@ -81,6 +81,20 @@ figcaption{font-size:12px;color:var(--muted)}
 @media (max-width:820px){.gallery{grid-template-columns:1fr}}
 .levels{display:flex;flex-direction:column;gap:18px}
 .levels figcaption{font-size:13.5px;color:var(--fg)}
+.mcards{display:flex;flex-direction:column;gap:14px}
+.mcard{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.mgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:24px}
+@media (max-width:760px){.mgrid{grid-template-columns:1fr}}
+.mlabel{font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
+.inputs ul{margin:0;padding-left:18px;font-size:14px;display:flex;flex-direction:column;gap:4px}
+.msrc{margin-top:10px;font:500 11px/1.4 var(--mono);color:var(--muted)}
+.step{display:grid;grid-template-columns:minmax(0,1fr) auto 72px;gap:12px;align-items:baseline;padding:6px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.step .k{color:var(--muted)}
+.step .m{font-family:var(--mono);font-size:13px;text-align:right}
+.step .r{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;font-weight:500}
+.step.hi .r{font-weight:700;color:var(--fg)}
+.step.hi .k{color:var(--fg);font-weight:600}
+@media (max-width:520px){.step{grid-template-columns:minmax(0,1fr) 64px}.step .m{grid-column:1/-1;grid-row:2;text-align:left}}
 .vh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .callout{border-left:3px solid var(--c);padding:4px 0 4px 14px;font-size:14px}
 .open li{margin-bottom:6px}
@@ -107,9 +121,9 @@ a{color:inherit;text-decoration-color:var(--muted)}
     <div class="v" style="--c:var(--soona)">
       <div><div class="name">soona</div><div class="aka">Bought Trend.io in 2023 · about 2K vetted UGC creators · studio too</div></div>
       <span class="pill opt">◐ Managed is an add-on</span>
-      <div class="big">$480<small> / video managed</small></div>
-      <div class="calc">$24,000 ÷ 50 videos</div>
-      <ul><li>$184 / video self-serve ($9,198 ÷ 50)</li><li>Managing them is 61% of the bill ($14,734 ÷ $24,000)</li><li>Delivers <b>video files only</b>. Creator posting is +$500 to $1,000 per post</li></ul>
+      <div class="big">$400–552<small> / video managed</small></div>
+      <div class="calc">$81–233 video + $319 management</div>
+      <ul><li>Self-serve: $89 / $169 / $259 per video by level, + $588 a year</li><li>Managing them is 61% of the bill ($14,734 ÷ $24,000)</li><li>Delivers <b>video files only</b>. Creator posting is +$500 to $1,000 per post</li></ul>
     </div>
     <div class="v" style="--c:var(--ins)">
       <div><div class="name">Insense</div><div class="aka">125K creators (about 75K in the US) · SaaS marketplace</div></div>
@@ -124,81 +138,107 @@ a{color:inherit;text-decoration-color:var(--muted)}
 <section>
   <h2>Cost per piece, around 50 pieces</h2>
   <div class="panel chart">
-    <svg viewBox="0 0 760 330" role="img" aria-label="Cost per piece by vendor">
-      <!-- scale: x = 210 + value * 1.0 ; 0..500 → 210..710 -->
-      <g class="grid">
-        <line x1="210" y1="20" x2="210" y2="290"/><line x1="310" y1="20" x2="310" y2="290"/>
-        <line x1="410" y1="20" x2="410" y2="290"/><line x1="510" y1="20" x2="510" y2="290"/>
-        <line x1="610" y1="20" x2="610" y2="290"/><line x1="710" y1="20" x2="710" y2="290"/>
-      </g>
-      <g class="axis" text-anchor="middle">
-        <text x="210" y="310">$0</text><text x="310" y="310">$100</text><text x="410" y="310">$200</text>
-        <text x="510" y="310">$300</text><text x="610" y="310">$400</text><text x="710" y="310">$500</text>
-      </g>
-      <!-- managed -->
-      <text x="0" y="44" font-weight="600">minisocial · managed</text><text x="0" y="60" class="sub">50 creators, $11K, posts included</text>
-      <rect x="210" y="34" width="220" height="22" rx="3" fill="var(--mini)"/><text x="438" y="50" class="val">$220</text>
-
-      <text x="0" y="98" font-weight="600">Insense · managed</text><text x="0" y="114" class="sub">$4,600 fee for 20 + creator pay</text>
-      <rect x="210" y="88" width="337" height="22" rx="3" fill="var(--ins)"/>
-      <rect x="547" y="88" width="107" height="22" rx="3" fill="var(--ins)" opacity=".45"/><text x="662" y="104" class="val">$337–444</text>
-
-      <text x="0" y="152" font-weight="600">soona · managed</text><text x="0" y="168" class="sub">50 videos, $24K, files only</text>
-      <rect x="210" y="142" width="480" height="22" rx="3" fill="var(--soona)"/><text x="682" y="158" class="val" text-anchor="end" fill="var(--bg)">$480</text>
-
+    <svg viewBox="0 0 800 330" role="img" aria-label="Cost per piece by vendor">
+      <g class="grid"><line x1="210.0" y1="20" x2="210.0" y2="290"/><line x1="293.3" y1="20" x2="293.3" y2="290"/><line x1="376.7" y1="20" x2="376.7" y2="290"/><line x1="460.0" y1="20" x2="460.0" y2="290"/><line x1="543.3" y1="20" x2="543.3" y2="290"/><line x1="626.7" y1="20" x2="626.7" y2="290"/><line x1="710.0" y1="20" x2="710.0" y2="290"/></g>
+      <g class="axis" text-anchor="middle"><text x="210.0" y="310">$0</text><text x="293.3" y="310">$100</text><text x="376.7" y="310">$200</text><text x="460.0" y="310">$300</text><text x="543.3" y="310">$400</text><text x="626.7" y="310">$500</text><text x="710.0" y="310">$600</text></g>
+      <text x="0" y="44" font-weight="600">minisocial · managed</text><text x="0" y="60" class="sub">$11,000 ÷ 50 creators</text>
+      <rect x="210" y="34" width="183.3" height="22" rx="3" fill="var(--mini)"/><text x="401.3" y="50" class="val">$220</text>
+      <text x="0" y="98" font-weight="600">Insense · managed</text><text x="0" y="114" class="sub">$230 fee + creator $100–200</text>
+      <rect x="210" y="88" width="280.8" height="22" rx="3" fill="var(--ins)" opacity=".35"/><rect x="490.8" y="88" width="89.2" height="22" rx="3" fill="var(--ins)"/><text x="588.0" y="104" class="val">$337–444</text>
+      <text x="0" y="152" font-weight="600">soona · managed</text><text x="0" y="168" class="sub">Level 1 to Level 3, avg $480</text>
+      <rect x="210" y="142" width="333.3" height="22" rx="3" fill="var(--soona)" opacity=".35"/><rect x="543.3" y="142" width="126.7" height="22" rx="3" fill="var(--soona)"/><line x1="610.0" y1="138" x2="610.0" y2="168" stroke="var(--fg)" stroke-width="2"/><text x="678.0" y="158" class="val">$400–552</text>
       <line x1="0" y1="190" x2="710" y2="190" class="grid" stroke-dasharray="3 4"/>
-      <!-- self-serve -->
-      <text x="0" y="222" font-weight="600">soona · self-serve</text><text x="0" y="238" class="sub">same 50 videos, $9.2K</text>
-      <rect x="210" y="212" width="184" height="22" rx="3" fill="none" stroke="var(--soona)" stroke-width="2"/><text x="402" y="228" class="val">$184</text>
-
-      <text x="0" y="272" font-weight="600">Insense · self-serve</text><text x="0" y="288" class="sub">$500/mo + creator $100–200 + 10%</text>
-      <rect x="210" y="262" width="120" height="22" rx="3" fill="none" stroke="var(--ins)" stroke-width="2"/>
-      <rect x="330" y="262" width="110" height="22" rx="3" fill="none" stroke="var(--ins)" stroke-width="2" stroke-dasharray="4 3"/><text x="448" y="278" class="val">$120–230</text>
+      <text x="0" y="222" font-weight="600">soona · self-serve</text><text x="0" y="238" class="sub">$89 / $169 / $259, avg $184</text>
+      <rect x="284.2" y="212" width="141.7" height="22" rx="3" fill="none" stroke="var(--soona)" stroke-width="2"/><line x1="363.3" y1="208" x2="363.3" y2="238" stroke="var(--fg)" stroke-width="2"/><text x="433.8" y="228" class="val">$89–259</text>
+      <text x="0" y="272" font-weight="600">Insense · self-serve</text><text x="0" y="288" class="sub">$500/mo + creator $100–200</text>
+      <rect x="310.0" y="262" width="91.7" height="22" rx="3" fill="none" stroke="var(--ins)" stroke-width="2"/><text x="409.7" y="278" class="val">$120–230</text>
     </svg>
-    <p class="note">Solid bars: fully managed. Outlined bars: self-serve, where our team does the creator work. Product and shipping are extra for all three. soona's totals buy that many videos, spread over up to 12 months. They are not a monthly price. Every number is worked out in the table below.</p>
+    <p class="note">Solid bars: fully managed. Outlined bars: self-serve, where our team does the creator work. A range runs from the cheapest to the priciest piece. On the soona bars, the black tick is the average for the mix soona proposed: 16 Level 1, 18 Level 2 and 16 Level 3 videos. Product and shipping are extra for all three. soona's totals buy that many videos, spread over up to 12 months. They are not a monthly price. Every number is worked out in the table below.</p>
   </div>
   <p class="callout" style="--c:var(--soona)"><b>The deliverables differ.</b> minisocial and Insense influencer posts include the creator <b>posting</b> on their own feed. soona's $89 to $259 buys a licensed video file. Add posting at $500 to $1,000+ per post and even self-serve soona costs about 3 to 5 times minisocial's $220 for the same "creator posts about us" result: ($184 + $500) ÷ $220 = 3.1×, and ($184 + $1,000) ÷ $220 = 5.4×.</p>
 </section>
 
 <section>
   <h2>How each number was computed</h2>
-  <p class="note">Inputs come from the vendors (call, proposal or website). The math is mine. Cost per piece = total price ÷ number of pieces.</p>
-  <div class="panel tbl">
-    <table class="math">
-      <thead><tr><th>Figure</th><th>Calculation</th><th>Where the inputs come from</th></tr></thead>
-      <tbody>
-        <tr><td>minisocial, managed</td><td>$11,000 ÷ 50 = <b>$220</b><br>($3,000 ÷ 10 = $300 · $22,500 ÷ 100 = $225)</td><td>Kirsten on the Nov 13 call</td></tr>
-        <tr><td>Insense, managed fee per creator</td><td>$2,500 ÷ 10 = $250<br>$3,600 ÷ 15 = $240<br>$4,600 ÷ 20 = <b>$230</b></td><td>Insense "Dedicated Platform Manager" sample pricing slide from the Sep 17 demo (per month, creator pay not included)</td></tr>
-        <tr><td>Insense, managed all-in (low)</td><td>$230 + ($100 × 1.07)<br>= $230 + $107 = <b>$337</b></td><td>Option 3 fee per creator + $100 creator pay (Insense's UGC floor) + the 7% marketplace fee on the slide</td></tr>
-        <tr><td>Insense, managed all-in (high)</td><td>$230 + ($200 × 1.07)<br>= $230 + $214 = <b>$444</b></td><td>Same, at the $200 per creator we put in our Sep 25 brief</td></tr>
-        <tr><td>Insense, minimum spend</td><td>2 months × $4,600 = <b>$9,200</b> in fees upfront<br>3-month plan: 3 × $4,600 × 0.90 = $12,420 → $12,420 ÷ 60 creators = $207 fee per creator</td><td>Slide payment terms: 2-month minimum, paid upfront, 10% off a 3-month plan</td></tr>
-        <tr><td>soona, managed</td><td>$24,000 ÷ 50 = <b>$480</b><br>($12,801 ÷ 27 = $474 · $48,000 ÷ 100 = $480)</td><td>soona proposal, Nov 9, "Total with campaign manager"</td></tr>
-        <tr><td>soona, self-serve</td><td>$9,198 ÷ 50 = <b>$184</b><br>($5,241 ÷ 27 = $194 · $17,808 ÷ 100 = $178)</td><td>soona proposal, "Total, self-serve"</td></tr>
-        <tr><td>soona, management share</td><td>$14,734 ÷ $24,000 = <b>61%</b></td><td>soona proposal, "Campaign management" line on Option 2</td></tr>
-        <tr><td>Insense, self-serve (low)</td><td>[$500 + 50 × ($100 × 1.10)] ÷ 50<br>= ($500 + $5,500) ÷ 50 = <b>$120</b></td><td>insense.pro/pricing: $500/mo Brand plan, 10% fee, UGC from $100. Assumes 50 creators in one month</td></tr>
-        <tr><td>Insense, self-serve (high)</td><td>[$500 + 50 × ($200 × 1.10)] ÷ 50<br>= ($500 + $11,000) ÷ 50 = <b>$230</b></td><td>Same, at the $200 per creator we put in our Sep 25 brief</td></tr>
-        <tr><td>soona with posting vs minisocial</td><td>($184 + $500) ÷ $220 = <b>3.1×</b><br>($184 + $1,000) ÷ $220 = <b>5.4×</b></td><td>soona proposal add-on: creator posting $500–1,000+ per post</td></tr>
-      </tbody>
-    </table>
+  <p class="note">One block per platform. Left: the vendor's own numbers and where they come from. Right: my math, step by step. Cost per piece = total price ÷ number of pieces.</p>
+  <div class="mcards">
+
+    <div class="mcard" style="--c:var(--mini)">
+      <h3><span class="dot d-mini"></span>minisocial</h3>
+      <div class="mgrid">
+        <div class="inputs"><div class="mlabel">Inputs</div>
+          <ul><li>$3,000 for 10 creators</li><li>$11,000 for 50 creators</li><li>$22,500 for 100 creators</li></ul>
+          <div class="msrc">Kirsten, Nov 13 call</div></div>
+        <div class="steps"><div class="mlabel">Math</div>
+          <div class="step"><span class="k">Managed, 10</span><span class="m">$3,000 ÷ 10</span><span class="r">$300</span></div>
+          <div class="step hi"><span class="k">Managed, 50</span><span class="m">$11,000 ÷ 50</span><span class="r">$220</span></div>
+          <div class="step"><span class="k">Managed, 100</span><span class="m">$22,500 ÷ 100</span><span class="r">$225</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mcard" style="--c:var(--soona)">
+      <h3><span class="dot d-soona"></span>soona</h3>
+      <div class="mgrid">
+        <div class="inputs"><div class="mlabel">Inputs</div>
+          <ul><li>27 videos: $12,801 managed / $5,241 self-serve</li><li>50 videos: $24,000 managed / $9,198 self-serve</li><li>100 videos: $48,000 managed / $17,808 self-serve</li><li>Campaign management line on the 50 option: $14,734. Membership $1,200</li><li>Proposed mix for 50: 16 Level 1 / 18 Level 2 / 16 Level 3</li><li>Video prices: $89 / $169 / $259 list. $81–233 on Enterprise</li><li>Creator posting add-on: $500–1,000+ per post</li></ul>
+          <div class="msrc">soona proposal PDF, Nov 9. My assumption: management cost is the same for every level, since soona doesn't split it</div></div>
+        <div class="steps"><div class="mlabel">Math</div>
+          <div class="step"><span class="k">Self-serve, Level 1</span><span class="m">list price</span><span class="r">$89</span></div>
+          <div class="step"><span class="k">Self-serve, Level 2</span><span class="m">list price</span><span class="r">$169</span></div>
+          <div class="step"><span class="k">Self-serve, Level 3</span><span class="m">list price</span><span class="r">$259</span></div>
+          <div class="step"><span class="k">Self-serve total, their 50 mix</span><span class="m">16×$89 + 18×$169 + 16×$259 + $588<br>= $1,424 + $3,042 + $4,144 + $588</span><span class="r">$9,198</span></div>
+          <div class="step hi"><span class="k">Self-serve average</span><span class="m">$9,198 ÷ 50</span><span class="r">$184</span></div>
+          <div class="step"><span class="k">Management + membership per video</span><span class="m">($14,734 + $1,200) ÷ 50</span><span class="r">$319</span></div>
+          <div class="step hi"><span class="k">Managed, Level 1</span><span class="m">$81 + $319</span><span class="r">$400</span></div>
+          <div class="step hi"><span class="k">Managed, Level 3</span><span class="m">$233 + $319</span><span class="r">$552</span></div>
+          <div class="step"><span class="k">Managed average, their 50 mix</span><span class="m">$24,000 ÷ 50</span><span class="r">$480</span></div>
+          <div class="step"><span class="k">Management share</span><span class="m">$14,734 ÷ $24,000</span><span class="r">61%</span></div>
+          <div class="step"><span class="k">With posting vs minisocial</span><span class="m">($184 + $500) ÷ $220<br>($184 + $1,000) ÷ $220</span><span class="r">3.1×<br>5.4×</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mcard" style="--c:var(--ins)">
+      <h3><span class="dot d-ins"></span>Insense</h3>
+      <div class="mgrid">
+        <div class="inputs"><div class="mlabel">Inputs</div>
+          <ul><li>Managed fee per month: $2,500 / 10 creators · $3,600 / 15 · $4,600 / 20</li><li>Managed: creator pay extra, + 7% marketplace fee</li><li>Managed terms: 2-month minimum, upfront. 10% off 3 months</li><li>Self-serve Brand plan: $500/mo, + 10% fee on creator pay</li><li>Creator pay: UGC from $100. Our Sep 25 brief used $200</li></ul>
+          <div class="msrc">Insense managed slide (Sep 17 demo) · insense.pro/pricing · our Sep 25 brief</div></div>
+        <div class="steps"><div class="mlabel">Math · managed</div>
+          <div class="step"><span class="k">Fee per creator, 10</span><span class="m">$2,500 ÷ 10</span><span class="r">$250</span></div>
+          <div class="step"><span class="k">Fee per creator, 15</span><span class="m">$3,600 ÷ 15</span><span class="r">$240</span></div>
+          <div class="step"><span class="k">Fee per creator, 20</span><span class="m">$4,600 ÷ 20</span><span class="r">$230</span></div>
+          <div class="step hi"><span class="k">All-in, $100 creator</span><span class="m">$230 + ($100 × 1.07)</span><span class="r">$337</span></div>
+          <div class="step hi"><span class="k">All-in, $200 creator</span><span class="m">$230 + ($200 × 1.07)</span><span class="r">$444</span></div>
+          <div class="step"><span class="k">Minimum fees upfront</span><span class="m">2 × $4,600</span><span class="r">$9,200</span></div>
+          <div class="step"><span class="k">3-month plan fee per creator</span><span class="m">(3 × $4,600 × 0.90) ÷ 60</span><span class="r">$207</span></div>
+          <div class="mlabel" style="margin-top:10px">Math · self-serve (assumes 50 creators in one month)</div>
+          <div class="step hi"><span class="k">$100 creator</span><span class="m">[$500 + 50 × ($100 × 1.10)] ÷ 50</span><span class="r">$120</span></div>
+          <div class="step hi"><span class="k">$200 creator</span><span class="m">[$500 + 50 × ($200 × 1.10)] ÷ 50</span><span class="r">$230</span></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <section>
   <h2>Who does the work</h2>
-  <p class="note">The first three columns are fully managed. The last column shows Insense self-serve for contrast: same platform and creators, but our team does the work.</p>
+  <p class="note">The first three columns are fully managed. The last two columns show self-serve for contrast: same platform and creators, but our team does the work.</p>
   <div class="panel tbl">
     <table>
-      <thead><tr><th>Step</th><th><span class="dot d-mini"></span>minisocial</th><th><span class="dot d-soona"></span>soona managed</th><th><span class="dot d-ins"></span>Insense managed</th><th><span class="dot d-ins" style="background:none;border:2px solid var(--ins);width:6px;height:6px"></span>Insense self-serve</th></tr></thead>
+      <thead><tr><th>Step</th><th><span class="dot d-mini"></span>minisocial</th><th><span class="dot d-soona"></span>soona managed</th><th><span class="dot d-ins"></span>Insense managed</th><th><span class="dot d-ins" style="background:none;border:2px solid var(--ins);width:6px;height:6px"></span>Insense self-serve</th><th><span class="dot" style="border:2px solid var(--soona);width:6px;height:6px"></span>soona self-serve</th></tr></thead>
       <tbody>
-        <tr><td>Cost per creator</td><td class="num"><b>$220</b><br><span class="calc">$11,000 ÷ 50</span></td><td class="num"><b>$480</b><br><span class="calc">$24,000 ÷ 50 videos</span></td><td class="num"><b>$337–444</b><br><span class="calc">$4,600 ÷ 20 + ($100–200 × 1.07)</span></td><td class="num"><b>$120–230</b><br><span class="calc">[$500 + 50 × ($100–200 × 1.10)] ÷ 50</span></td></tr>
-        <tr><td>Commitment</td><td>Per project, none</td><td>$24K or $48K a year (Enterprise)</td><td>2 months upfront: 2 × $4,600 = $9,200 in fees</td><td>$1,500 a quarter, renews automatically</td></tr>
-        <tr><td>Write brief</td><td><span class="you">You</span> fill in the brief builder (10 min) or brief live with their strategist</td><td><span class="them">Them</span>: campaign manager builds briefs around your goals</td><td><span class="them">Them</span>: fill out and launch the brief in the platform. <span class="you">You</span> provide the creative brief (not in their scope)</td><td><span class="you">You</span>, from their brief templates</td></tr>
-        <tr><td>Find creators</td><td><span class="them">Them</span>: pick by hand from 40K. Only 10–20% of applicants get in</td><td><span class="them">Them</span>: recruit from about 2K vetted (top 35%)</td><td><span class="them">Them</span>: shortlist, and push your brief to top creators</td><td>Creators apply to your brief. <span class="you">You</span> review them and can invite more from the marketplace</td></tr>
-        <tr><td>Approve creators</td><td><span class="you">You</span></td><td><span class="you">You</span>, picking from Levels 1–3</td><td><span class="you">You</span></td><td><span class="you">You</span></td></tr>
-        <tr><td>Chase and messages</td><td><span class="them">Them</span>: all reminders, follow-ups and issue flags</td><td><span class="them">Them</span>: managed revisions</td><td><span class="them">Them</span>: deadlines, chasing, all messages, paying creators</td><td><span class="you">You</span>, in their chat (AI-assisted bulk messages). Contracts and payments run in the platform</td></tr>
-        <tr><td>Approve content</td><td><span class="you">You</span>. 1 revision round included</td><td><span class="you">You</span>. 7–10 day turnaround</td><td><span class="you">You</span></td><td><span class="you">You</span></td></tr>
-        <tr><td>Ghosting</td><td>Swap in a waitlisted creator or get a refund. Expect fewer than 5 of 50</td><td>Not discussed</td><td>Influencer posts are contractual. Repeat no-shows get removed</td><td>Same as managed, but <span class="you">you</span> handle replacing them. Gifting only: 30–50% may not post</td></tr>
-        <tr><td>Time to content</td><td class="num">4–6 weeks</td><td class="num">7–10 days after product arrives</td><td class="num">≈3 weeks</td><td class="num">≈3 weeks</td></tr>
+        <tr><td>Cost per creator</td><td class="num"><b>$220</b><br><span class="calc">$11,000 ÷ 50</span></td><td class="num"><b>$400–552</b><br><span class="calc">$81–233 video + $319 management</span></td><td class="num"><b>$337–444</b><br><span class="calc">$4,600 ÷ 20 + ($100–200 × 1.07)</span></td><td class="num"><b>$120–230</b><br><span class="calc">[$500 + 50 × ($100–200 × 1.10)] ÷ 50</span></td><td class="num"><b>$89–259</b><br><span class="calc">by level, + $588/yr membership</span></td></tr>
+        <tr><td>Commitment</td><td>Per project, none</td><td>$24K or $48K a year (Enterprise)</td><td>2 months upfront: 2 × $4,600 = $9,200 in fees</td><td>$1,500 a quarter, renews automatically</td><td>$588 a year Standard membership. Buy videos as needed</td></tr>
+        <tr><td>Write brief</td><td><span class="you">You</span> fill in the brief builder (10 min) or brief live with their strategist</td><td><span class="them">Them</span>: campaign manager builds briefs around your goals</td><td><span class="them">Them</span>: fill out and launch the brief in the platform. <span class="you">You</span> provide the creative brief (not in their scope)</td><td><span class="you">You</span>, from their brief templates</td><td><span class="you">You</span> create the campaign on book.soona.co</td></tr>
+        <tr><td>Find creators</td><td><span class="them">Them</span>: pick by hand from 40K. Only 10–20% of applicants get in</td><td><span class="them">Them</span>: recruit from about 2K vetted (top 35%)</td><td><span class="them">Them</span>: shortlist, and push your brief to top creators</td><td>Creators apply to your brief. <span class="you">You</span> review them and can invite more from the marketplace</td><td>Creators apply. <span class="you">You</span> review them or invite from their Talent directory (about 2K vetted)</td></tr>
+        <tr><td>Approve creators</td><td><span class="you">You</span></td><td><span class="you">You</span>, picking from Levels 1–3</td><td><span class="you">You</span></td><td><span class="you">You</span></td><td><span class="you">You</span>, at fixed prices per level ($89 / $169 / $259)</td></tr>
+        <tr><td>Chase and messages</td><td><span class="them">Them</span>: all reminders, follow-ups and issue flags</td><td><span class="them">Them</span>: managed revisions</td><td><span class="them">Them</span>: deadlines, chasing, all messages, paying creators</td><td><span class="you">You</span>, in their chat (AI-assisted bulk messages). Contracts and payments run in the platform</td><td><span class="you">You</span>, in their messaging. <span class="you">You</span> ship product to each creator</td></tr>
+        <tr><td>Approve content</td><td><span class="you">You</span>. 1 revision round included</td><td><span class="you">You</span>. 7–10 day turnaround</td><td><span class="you">You</span></td><td><span class="you">You</span></td><td><span class="you">You</span> approve and download, licensed forever</td></tr>
+        <tr><td>Ghosting</td><td>Swap in a waitlisted creator or get a refund. Expect fewer than 5 of 50</td><td>Not discussed</td><td>Influencer posts are contractual. Repeat no-shows get removed</td><td>Same as managed, but <span class="you">you</span> handle replacing them. Gifting only: 30–50% may not post</td><td>Not discussed</td></tr>
+        <tr><td>Time to content</td><td class="num">4–6 weeks</td><td class="num">7–10 days after product arrives</td><td class="num">≈3 weeks</td><td class="num">≈3 weeks</td><td class="num">≈7 days after product arrives</td></tr>
       </tbody>
     </table>
   </div>
